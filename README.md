@@ -133,3 +133,54 @@ Debouncing is a programming practice that limits the rate at which a function ca
 - Trigger Event: When an event that should be debounced (like a keystroke in the search box) occurs, a timer starts.
 - Wait: If a new event occurs before the timer expires, the timer is reset.
 - Execution: If the timer reaches the end of its countdown, the debounced function is executed.
+
+## Chapter 12: Mutating Data
+
+Behind the scenes, Server Actions create a POST API endpoint. This is why you don't need to create API endpoints manually when using Server Actions.
+
+#### Storing values in cents
+
+It's usually good practice to store monetary values in cents in your database to eliminate JavaScript floating-point errors and ensure greater accuracy.
+
+### `revalidatePath`
+
+Next.js has a Client-side Router Cache that stores the route segments in the user's browser for a time. Along with prefetching, this cache ensures that users can quickly navigate between routes while reducing the number of requests made to the server.
+
+Since you're updating the data displayed in the invoices route, you want to clear this cache and trigger a new request to the server. You can do this with the `revalidatePath` function from Next.js:
+
+## Chapter 13: Handling errors
+
+## Chapter 14: Improving Accessibility
+
+### What is accessibility?
+
+Accessibility refers to designing and implementing web applications that everyone can use, including those with disabilities. It's a vast topic that covers many areas, such as keyboard navigation, semantic HTML, images, colors, videos, etc.
+
+Next.js includes the `eslint-plugin-jsx-a11y` plugin to help catch accessibility issues early
+
+```json
+"scripts": {
+    "build": "next build",
+    "dev": "next dev",
+    "seed": "node -r dotenv/config ./scripts/seed.js",
+    "start": "next start",
+    "lint": "next lint"
+},
+```
+
+```terminal
+npm run lint
+✔ No ESLint warnings or errors
+```
+
+### Improving form accesibility
+
+There are three things we're already doing to improve accessibility in our forms:
+
+- **Semantic HTML:** Using semantic elements (`<input>`, `<option>`, etc) instead of `<div>`. This allows Assistive Technologies (AT) to focus on the input elements and provide appropriate contextual information to the user, making the form easier to navigate and understand.
+- **Labelling:** Including `<label>` and the htmlFor attribute ensures that each form field has a descriptive text label. This improves AT support by providing context and also enhances usability by allowing users to click on the label to focus on the corresponding input field.
+- **Focus Outline:** The fields are properly styled to show an outline when they are in focus. This is critical for accessibility as it visually indicates the active element on the page, helping both keyboard and screen reader users to understand where they are on the form. You can verify this by pressing tab.
+
+## Chapter 15: Adding Authentication
+
+The advantage of employing Middleware for this task is that the protected routes will not even start rendering until the Middleware verifies the authentication, enhancing both the security and performance of your application.
